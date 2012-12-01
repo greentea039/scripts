@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          HV Item Highlights
 // @namespace     HV Item Highlights
-// @version       1.0
+// @version       1.1
 // @description   Highlight player's and bazzar items
 // @include       http://hentaiverse.org/?s=Bazaar&ss=is*
 // @include       http://hentaiverse.org/?s=Bazaar&ss=mm&filter=Write%20New
@@ -259,7 +259,8 @@ function addStyle(styleText) {
 	var marginTopUnselected = marginTop;
 	var marginTopSelected = marginTop - 2;
 	var styleText
-		= 'div[id*="item_pane"] > div > div[style*="color"][style*="rgb(0, 48, 203)"]:not([class*="f10"]), div[id*="shop_pane"] > div > div[style*="color"][style*="rgb(0, 48, 203)"]:not([class*="f10"]) {border: solid 2px #e02040; margin: ' + marginTopSelected + 'px -2px -2px -2px;}'
+		= 'div[id*="inv_item"] > div > div {margin-top: ' + marginTop + 'px;}'
+		+ 'div[id*="item_pane"] > div > div[style*="color"][style*="rgb(0, 48, 203)"]:not([class*="f10"]), div[id*="shop_pane"] > div > div[style*="color"][style*="rgb(0, 48, 203)"]:not([class*="f10"]) {border: solid 2px #e02040; margin: ' + marginTopSelected + 'px -2px -2px -2px;}'
 		+ 'div[id*="item_pane"] > div > div[style*="color"][style*="rgb(92, 13, 17)"]:not([class*="f10"]), div[id*="shop_pane"] > div > div[style*="color"][style*="rgb(92, 13, 17)"]:not([class*="f10"]) {margin-top: ' + marginTopUnselected + 'px;}';
 	addStyle(styleText);
 	highlightText();
