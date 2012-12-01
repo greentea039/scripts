@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          HV Equipment Highlights
 // @namespace     HV Equipment Highlights
-// @version       1.0
+// @version       1.1
 // @description   Highlight player's and bazzar equipments
 // @include       http://hentaiverse.org/?s=Battle&ss=iw*
 // @include       http://hentaiverse.org/?s=Bazaar&ss=es*
@@ -78,10 +78,23 @@ const CSS_TEXT_MAP = {
 	"magnificent ":		"background-color: MistyRose;",
 	"legendary ":		"background-color: LightPink;",
 
-	// Suffix
-	" of the barrier":		"",
-	" of slaughter":		"",
-	" of the battlecaster":	"",
+	// Specific gear
+	" power helmet of slaughter":		"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" power armor of slaughter":		"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" power gauntlets of slaughter":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" power leggings of slaughter":		"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" power boots of slaughter":		"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" shield helmet of the barrier":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" shield cuirass of the barrier":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" shield gauntlets of the barrier":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" shield greaves of the barrier":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" shield sabatons of the barrier":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" hemlet of the battlecaster":		"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" breastplate of the battlecaster":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" gauntlets of the battlecaster":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" leggings of the battlecaster":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" boots of the battlecaster":		"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" of the shadowdancer":				"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
 
 	// Legacy
 	"dragon hide ":		"color: chocolate;",
