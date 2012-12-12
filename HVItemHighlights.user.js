@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          HV Item Highlights
 // @namespace     HV Item Highlights
-// @version       1.1
+// @version       1.2
 // @description   Highlight player's and bazzar items
 // @include       http://hentaiverse.org/?s=Bazaar&ss=is*
 // @include       http://hentaiverse.org/?s=Bazaar&ss=mm&filter=Write%20New
@@ -200,7 +200,7 @@ function applyCSS(element, cssTexts) {
 				for (j = 0; j < cssTexts.length; j++) {
 					element.style.cssText += cssTexts[j];
 				}
-			} else {
+			} else if (childNode.nodeValue.match(/[^\s]+/)) {
 				spanElement = document.createElement("span");
 				for (j = 0; j < cssTexts.length; j++) {
 					spanElement.style.cssText += cssTexts[j];
@@ -236,7 +236,7 @@ function clearMarginTop(element) {
 
 function highlightText() {
 	var i, item, name, cssTexts;
-	var items = document.querySelectorAll('#item_pane div[id*="item_pane"], #shop_pane div[id*="shop_pane"], #inv_item div[id*="inv_item"], #item div[id*="item"], #monsterpane');
+	var items = document.querySelectorAll('#item_pane div[id*="item_pane"], #shop_pane div[id*="shop_pane"], #inv_item div[id*="inv_item"], #item div[id*="item"], div[id*="monsterpane"][onmouseover]');
 	for (i = 0; i < items.length; i++) {
 		item = items[i];
 		name = text(item);
@@ -261,7 +261,8 @@ function addStyle(styleText) {
 	var styleText
 		= 'div[id*="inv_item"] > div > div {margin-top: ' + marginTop + 'px;}'
 		+ 'div[id*="item_pane"] > div > div[style*="color"][style*="rgb(0, 48, 203)"]:not([class*="f10"]), div[id*="shop_pane"] > div > div[style*="color"][style*="rgb(0, 48, 203)"]:not([class*="f10"]) {border: solid 2px #e02040; margin: ' + marginTopSelected + 'px -2px -2px -2px;}'
-		+ 'div[id*="item_pane"] > div > div[style*="color"][style*="rgb(92, 13, 17)"]:not([class*="f10"]), div[id*="shop_pane"] > div > div[style*="color"][style*="rgb(92, 13, 17)"]:not([class*="f10"]) {margin-top: ' + marginTopUnselected + 'px;}';
+		+ 'div[id*="item_pane"] > div > div[style*="color"][style*="rgb(92, 13, 17)"]:not([class*="f10"]), div[id*="shop_pane"] > div > div[style*="color"][style*="rgb(92, 13, 17)"]:not([class*="f10"]) {margin-top: ' + marginTopUnselected + 'px;}'
+		+ 'div[id*="monsterpane"][onmouseover] > div > div {margin-top: ' + marginTop + 'px;}';
 	addStyle(styleText);
 	highlightText();
 })();
