@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          HV Equipment Highlights
 // @namespace     HV Equipment Highlights
-// @version       1.1
+// @version       1.2
 // @description   Highlight player's and bazzar equipments
 // @include       http://hentaiverse.org/?s=Battle&ss=iw*
 // @include       http://hentaiverse.org/?s=Bazaar&ss=es*
@@ -169,7 +169,7 @@ function applyCSS(element, cssTexts) {
 				for (j = 0; j < cssTexts.length; j++) {
 					element.style.cssText += cssTexts[j];
 				}
-			} else {
+			} else if (childNode.nodeValue.match(/[^\s]+/)) {
 				spanElement = document.createElement("span");
 				for (j = 0; j < cssTexts.length; j++) {
 					spanElement.style.cssText += cssTexts[j];
