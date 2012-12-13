@@ -8,6 +8,7 @@
 // @include       http://hentaiverse.org/?s=Bazaar&ss=ss
 // @include       http://hentaiverse.org/?s=Character&ss=in*
 // @include       http://hentaiverse.org/?s=Character&ss=it
+// @run-at        document-end
 // ==/UserScript==
 
 const CSS_TEXT_MAP = {
