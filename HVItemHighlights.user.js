@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          HV Item Highlights
 // @namespace     HV Item Highlights
-// @version       1.2
+// @version       1.3
 // @description   Highlight player's and bazzar items
 // @include       http://hentaiverse.org/?s=Bazaar&ss=is*
 // @include       http://hentaiverse.org/?s=Bazaar&ss=mm&filter=Write%20New
@@ -27,13 +27,11 @@ const CSS_TEXT_MAP = {
 
 	// Infusion
 	"infusion ":				"color: PaleVioletRed;",
-	"infusion of gaia":			"background-color: Seashell;",
 
 	// scroll
 	"scroll ": 					"color: DarkSlateGray;",
 	"scroll of swiftness":		"opacity: 0.75;",
 	"scroll of protection":		"opacity: 0.75;",
-	"scroll of warding":		"opacity: 0.75;",
 	"scroll of the avatar":		"",
 	"scroll of shadows":		"opacity: 0.75;",
 	"scroll of absorption":		"",
@@ -156,6 +154,10 @@ const CSS_TEXT_MAP = {
 
 	// Collectable
 	" figurine":	"color: transparent; text-shadow: 1px 2px 4px rgba(255, 255, 255, 0.5), 0 0 0 rgba(0, 0, 0, 0.4);",
+
+	// Obsolete
+	"infusion of gaia":			"color: Grey;",
+	"scroll of warding":		"color: Grey; opacity: 0.75;",
 };
 
 function match(text) {
