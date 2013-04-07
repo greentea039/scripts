@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          HV Equipment Highlights
 // @namespace     HV Equipment Highlights
-// @version       1.2
+// @version       1.3
 // @description   Highlight player's and bazzar equipments
 // @include       http://hentaiverse.org/?s=Battle&ss=iw*
 // @include       http://hentaiverse.org/?s=Bazaar&ss=es*
@@ -59,16 +59,6 @@ const CSS_TEXT_MAP = {
 	" shield greaves":		"color: DarkBlue;",
 	" shield sabatons":		"color: DarkBlue;",
 
-	// Ethereal/Elemental
-	"ethereal ":		"text-shadow: 0px -1px 1px rgba(255,255,255,0.75), 0px -2px 1px rgba(0,0,0,0.375), 0px -3px 2px rgba(255,255,255,0.5), 0px -4px 2px rgba(0,0,0,0.25);",
-	"fiery ":			"text-shadow: 0px -1px 1px #ffffff, 0px -2px 2px #ffff00, 0px -3px 3px #ffff00, 0px -4px 4px #ff0000;",
-	"arctic ":			"text-shadow: 0px -2px 0px #ffffff, 0px 1px 0px #ffffff, 0px 3px 4px #00a0ff;",
-	"shocking ":		"text-shadow: 0px -1px 1px #ffffff, 0px -2px 1px #5f5fff;",
-	"tempestuous ":		"text-shadow: 0px 0px 2px #ffffff, 0px 0px 3px #3f3f3f, 0px 0px 4px #1f1f1f;",
-	"hallowed ":		"text-shadow: 0px -2px 0px #ffffff, 0px 1px 0px #ffffff, -1px 0px 0px #ffffff, 1px 0px 0px #ffffff, 0px -4px 4px #ffff40, 0px 4px 4px #ffff40, -3px 0px 3px #ffffff, 3px 0px 3px #ffffff;",
-	"demonic ":			"text-shadow: 0px 1px 1px #ff8080, 0px -2px 4px #400060;",
-	"astral ":			"text-shadow: 0px -1px 2px #ff80ff, 0px 1px 1px #404040, 0px -2px 4px #00d090;",
-
 	// Quality
 	"crude ":			"opacity: 0.5;",
 	"fair ":			"opacity: 0.625;",
@@ -79,23 +69,45 @@ const CSS_TEXT_MAP = {
 	"magnificent ":		"background-color: MistyRose;",
 	"legendary ":		"background-color: LightPink;",
 
+	// Weapon Prefix
+	"ethereal ":		"text-shadow: 0px -1px 1px rgba(255,255,255,0.75), 0px -2px 1px rgba(0,0,0,0.375), 0px -3px 2px rgba(255,255,255,0.5), 0px -4px 2px rgba(0,0,0,0.25);",
+	"fiery ":			"text-shadow: 0px -1px 1px #ffffff, 0px -2px 2px #ffff00, 0px -3px 3px #ffff00, 0px -4px 4px #ff0000;",
+	"arctic ":			"text-shadow: 0px -2px 0px #ffffff, 0px 1px 0px #ffffff, 0px 3px 4px #00a0ff;",
+	"shocking ":		"text-shadow: 0px -1px 1px #ffffff, 0px -2px 1px #5f5fff;",
+	"tempestuous ":		"text-shadow: 0px 0px 2px #ffffff, 0px 0px 3px #3f3f3f, 0px 0px 4px #1f1f1f;",
+	"hallowed ":		"text-shadow: 0px -2px 0px #ffffff, 0px 1px 0px #ffffff, -1px 0px 0px #ffffff, 1px 0px 0px #ffffff, 0px -4px 4px #ffff40, 0px 4px 4px #ffff40, -3px 0px 3px #ffffff, 3px 0px 3px #ffffff;",
+	"demonic ":			"text-shadow: 0px 1px 1px #ff8080, 0px -2px 4px #400060;",
+	"astral ":			"text-shadow: 0px -1px 2px #ff80ff, 0px 1px 1px #404040, 0px -2px 4px #00d090;",
+
+	// Armor Prefix
+	"charged ":			"text-shadow: 0px -1px 2px rgba(0,0,0,0.5);",
+	"frugal ":			"text-shadow: 0px -1px 2px rgba(0,0,0,0.5);",
+	"agile ":			"text-shadow: 0px -1px 2px rgba(0,0,0,0.5);",
+	"reinforced ":		"text-shadow: 0px -1px 1px rgba(255,255,255,1.0), 0px 1px 1px rgba(0,0,0,0.5), -1px 0px 1px rgba(0,0,0,0.5), 1px 0px 1px rgba(0,0,0,0.5);",
+	"shielding ":		"text-shadow: 0px -1px 1px rgba(255,255,255,1.0), 0px 1px 1px rgba(0,0,0,0.5), -1px 0px 1px rgba(0,0,0,0.5), 1px 0px 1px rgba(0,0,0,0.5);",
+	"mithril ":			"text-shadow: 0px -1px 1px White, 0px 0px 3px Black;",
+	"ruby ":			"text-shadow: 0px -1px 1px White, 0px 0px 3px DarkRed;",
+	"cobalt ":			"text-shadow: 0px -1px 1px White, 0px 0px 3px Blue;",
+	"amber ":			"text-shadow: 0px -1px 1px White, 0px 0px 3px DarkGoldenrod;",
+	"jade ":			"text-shadow: 0px -1px 1px White, 0px 0px 3px DarkGreen;",
+
 	// Specific gear
-	" power helmet of slaughter":		"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" power armor of slaughter":		"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" power gauntlets of slaughter":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" power leggings of slaughter":		"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" power boots of slaughter":		"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" shield helmet of the barrier":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" shield cuirass of the barrier":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" shield gauntlets of the barrier":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" shield greaves of the barrier":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" shield sabatons of the barrier":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" hemlet of the battlecaster":		"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" breastplate of the battlecaster":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" gauntlets of the battlecaster":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" leggings of the battlecaster":	"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" boots of the battlecaster":		"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
-	" of the shadowdancer":				"text-shadow: 1px -1px 2px rgba(0,0,0,0.5);",
+	" power helmet of slaughter":		"text-decoration: underline;",
+	" power armor of slaughter":		"text-decoration: underline;",
+	" power gauntlets of slaughter":	"text-decoration: underline;",
+	" power leggings of slaughter":		"text-decoration: underline;",
+	" power boots of slaughter":		"text-decoration: underline;",
+	" shield helmet of the barrier":	"text-decoration: underline;",
+	" shield cuirass of the barrier":	"text-decoration: underline;",
+	" shield gauntlets of the barrier":	"text-decoration: underline;",
+	" shield greaves of the barrier":	"text-decoration: underline;",
+	" shield sabatons of the barrier":	"text-decoration: underline;",
+	" hemlet of the battlecaster":		"text-decoration: underline;",
+	" breastplate of the battlecaster":	"text-decoration: underline;",
+	" gauntlets of the battlecaster":	"text-decoration: underline;",
+	" leggings of the battlecaster":	"text-decoration: underline;",
+	" boots of the battlecaster":		"text-decoration: underline;",
+	" of the shadowdancer":				"text-decoration: underline;",
 
 	// Legacy
 	"dragon hide ":		"color: chocolate;",
@@ -104,9 +116,7 @@ const CSS_TEXT_MAP = {
 	"silver ":			"color: gray;",
 	"bronze ":			"color: gray;",
 	"diamond ":			"color: gray;",
-	"ruby ":			"color: gray;",
 	"emerald ":			"color: gray;",
-	"mithril ":			"color: gray;",
 	"prism ":			"color: gray;",
 	"platinum ":		"color: gray;",
 	"steel ":			"color: gray;",
@@ -119,12 +129,12 @@ const CSS_TEXT_MAP = {
 	"mitons ":			"color: gray;",
 	"coif ":			"color: gray;",
 	"hauberk ":			"color: gray;",
-	" of the ox":		"",
-	" of the raccoon":	"",
-	" of the cheetah":	"",
-	" of the turtle":	"",
-	" of the fox":		"",
-	" of the owl":		"",
+	" of the ox":		"color: gray;",
+	" of the raccoon":	"color: gray;",
+	" of the cheetah":	"color: gray;",
+	" of the turtle":	"color: gray;",
+	" of the fox":		"color: gray;",
+	" of the owl":		"color: gray;",
 };
 
 function match(text) {
@@ -184,7 +194,8 @@ function applyCSS(element, cssTexts) {
 
 function adjustWidth(element) {
 	var i, childNode;
-	if (element.getAttribute("class") !== "f10lb") {
+	var className = element.getAttribute("class") || "";
+	if (className.substring(0, 3) !== "f10") {
 		element.style.cssText += "width: auto;";
 	}
 	for (i = 0; i < element.childNodes.length; i++) {
