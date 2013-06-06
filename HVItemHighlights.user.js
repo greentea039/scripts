@@ -1,14 +1,15 @@
 // ==UserScript==
-// @name          HV Item Highlights
-// @namespace     HV Item Highlights
-// @version       1.3
-// @description   Highlight player's and bazzar items
-// @include       http://hentaiverse.org/?s=Bazaar&ss=is*
-// @include       http://hentaiverse.org/?s=Bazaar&ss=mm&filter=Write%20New
-// @include       http://hentaiverse.org/?s=Bazaar&ss=ss
-// @include       http://hentaiverse.org/?s=Character&ss=in*
-// @include       http://hentaiverse.org/?s=Character&ss=it
-// @run-at        document-end
+// @name            HV Item Highlights
+// @namespace       HV Item Highlights
+// @version         1.4
+// @description     Highlight player's and bazzar items
+// @include         http://hentaiverse.org/?s=Bazaar&ss=is*
+// @include         http://hentaiverse.org/?s=Bazaar&ss=mm&filter=Write%20New
+// @include         http://hentaiverse.org/?s=Bazaar&ss=ss
+// @include         http://hentaiverse.org/?s=Character&ss=in*
+// @include         http://hentaiverse.org/?s=Character&ss=it
+// @exclude         http://hentaiverse.org/?login*
+// @run-at          document-end
 // ==/UserScript==
 
 const CSS_TEXT_MAP = {
@@ -17,7 +18,7 @@ const CSS_TEXT_MAP = {
 	"average ":			"opacity: 0.625;",
 	"greater ":			"opacity: 0.75;",
 	"superior ":		"opacity: 0.875;",
-	"godly ":			"",
+	"heroic ":			"",
 	" elixir":			"background-color: Seashell;",
 	"health ":			"color: rgb(0,166,23);",
 	"mana ":			"color: rgb(0,22,184);",
@@ -39,11 +40,11 @@ const CSS_TEXT_MAP = {
 	"scroll of the gods":		"background-color: Seashell;",
 
 	// Special Item
-	"soul stone":		"color: Tomato;",
 	"flower vase":		"color: DeepSkyBlue;",
 	"bubble-gum":		"color: Green;",
 
 	// Artifact
+	"precursor artifact":			"color: Blue; text-shadow: -1px -1px 1px #ffffff, 1px 1px 1px #808080;",
 	"shark-mounted laser":			"color: Blue; text-shadow: -1px -1px 1px #ffffff, 1px 1px 1px #808080;",
 	"bfg9000":						"color: Blue; text-shadow: -1px -1px 1px #ffffff, 1px 1px 1px #808080;",
 	"railgun":						"color: Blue; text-shadow: -1px -1px 1px #ffffff, 1px 1px 1px #808080;",
@@ -152,12 +153,19 @@ const CSS_TEXT_MAP = {
 	"featherweight ":			"opacity: 0.75;",
 	"amnesia ":					"background-color: Seashell;",
 
+	// Monster Food
+	"monster chow":				"color: Tomato; opacity: 0.5;",
+	"monster edibles":			"color: Tomato; opacity: 0.75;",
+	"monster cuisine":			"color: Tomato;",
+	"happy pills":				"color: Tomato; background-color: Seashell;",
+
 	// Collectable
 	" figurine":	"color: transparent; text-shadow: 1px 2px 4px rgba(255, 255, 255, 0.5), 0 0 0 rgba(0, 0, 0, 0.4);",
 
 	// Obsolete
 	"infusion of gaia":			"color: Grey;",
 	"scroll of warding":		"color: Grey; opacity: 0.75;",
+	"soul stone":				"color: Grey;",
 };
 
 function match(text) {

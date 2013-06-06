@@ -1,15 +1,16 @@
 // ==UserScript==
-// @name          HV Equipment Highlights
-// @namespace     HV Equipment Highlights
-// @version       1.3
-// @description   Highlight player's and bazzar equipments
-// @include       http://hentaiverse.org/?s=Battle&ss=iw*
-// @include       http://hentaiverse.org/?s=Bazaar&ss=es*
-// @include       http://hentaiverse.org/?s=Bazaar&ss=fr*
-// @include       http://hentaiverse.org/?s=Bazaar&ss=mm&filter=Write%20New
-// @include       http://hentaiverse.org/?s=Character&ss=in*
-// @include       http://hentaiverse.org/?s=Character&ss=eq*
-// @run-at        document-end
+// @name            HV Equipment Highlights
+// @namespace       HV Equipment Highlights
+// @version         1.4
+// @description     Highlight player's and bazzar equipments
+// @include         http://hentaiverse.org/?s=Battle&ss=iw*
+// @include         http://hentaiverse.org/?s=Bazaar&ss=es*
+// @include         http://hentaiverse.org/?s=Bazaar&ss=fr*
+// @include         http://hentaiverse.org/?s=Bazaar&ss=mm&filter=Write%20New
+// @include         http://hentaiverse.org/?s=Character&ss=in*
+// @include         http://hentaiverse.org/?s=Character&ss=eq*
+// @exclude         http://hentaiverse.org/?login*
+// @run-at          document-end
 // ==/UserScript==
 
 const CSS_TEXT_MAP = {
@@ -85,11 +86,13 @@ const CSS_TEXT_MAP = {
 	"agile ":			"text-shadow: 0px -1px 2px rgba(0,0,0,0.5);",
 	"reinforced ":		"text-shadow: 0px -1px 1px rgba(255,255,255,1.0), 0px 1px 1px rgba(0,0,0,0.5), -1px 0px 1px rgba(0,0,0,0.5), 1px 0px 1px rgba(0,0,0,0.5);",
 	"shielding ":		"text-shadow: 0px -1px 1px rgba(255,255,255,1.0), 0px 1px 1px rgba(0,0,0,0.5), -1px 0px 1px rgba(0,0,0,0.5), 1px 0px 1px rgba(0,0,0,0.5);",
-	"mithril ":			"text-shadow: 0px -1px 1px White, 0px 0px 3px Black;",
+	"mithril ":			"text-shadow: 0px -1px 1px White, 0px 0px 3px Grey;",
 	"ruby ":			"text-shadow: 0px -1px 1px White, 0px 0px 3px DarkRed;",
 	"cobalt ":			"text-shadow: 0px -1px 1px White, 0px 0px 3px Blue;",
 	"amber ":			"text-shadow: 0px -1px 1px White, 0px 0px 3px DarkGoldenrod;",
 	"jade ":			"text-shadow: 0px -1px 1px White, 0px 0px 3px DarkGreen;",
+	"zircon ":			"text-shadow: 0px -1px 1px White, 0px 0px 3px #28a8d8;",
+	"onyx ":			"text-shadow: 0px -1px 1px White, 0px 0px 3px Black;",
 
 	// Specific gear
 	" power helmet of slaughter":		"text-decoration: underline;",
@@ -117,6 +120,7 @@ const CSS_TEXT_MAP = {
 	"bronze ":			"color: gray;",
 	"diamond ":			"color: gray;",
 	"emerald ":			"color: gray;",
+	"sapphire ":		"color: gray;",
 	"prism ":			"color: gray;",
 	"platinum ":		"color: gray;",
 	"steel ":			"color: gray;",
@@ -195,7 +199,7 @@ function applyCSS(element, cssTexts) {
 function adjustWidth(element) {
 	var i, childNode;
 	var className = element.getAttribute("class") || "";
-	if (className.substring(0, 3) !== "f10") {
+	if (className.substring(0, 2) !== "f2") {
 		element.style.cssText += "width: auto;";
 	}
 	for (i = 0; i < element.childNodes.length; i++) {
